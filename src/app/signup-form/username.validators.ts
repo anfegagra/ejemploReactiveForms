@@ -8,7 +8,14 @@ export class UsernameValidators {
         return null;
     }
 
-    /*static shouldBeUnic(control: AbstractControl): ValidationErrors | null {
-
-    }*/
+    static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(control.value === 'pipe')
+                    resolve({ shouldBeUnique: true});
+                else 
+                     resolve(null);
+            }, 2000)
+        })
+    }
 }
